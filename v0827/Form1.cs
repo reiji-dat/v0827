@@ -14,6 +14,7 @@ namespace v0827
     {
         int vx = -10;
         int vy = -10;
+        bool pien = false;
         public Form1()
         {
             InitializeComponent();
@@ -32,9 +33,14 @@ namespace v0827
 
         private void label1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("捕まっちゃった(泣)");
             vx = 0;
             vy = 0;
+            if (!pien)
+            {
+                label1.Text = "( ﾉД`)ｼｸｼｸ…";
+                MessageBox.Show("捕まっちゃった(泣)");
+                pien = true;
+            }
         }
     }
 }
