@@ -25,13 +25,16 @@ namespace v0827
             label1.Top += vy;
             Point mp = MousePosition;
             mp = PointToClient(mp);
+            label2.Text = mp.X + ","+ mp.Y;
             label2.Left = mp.X;
             label2.Top = mp.Y;
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("捕まっちゃった(泣)");
+            vx = 0;
+            vy = 0;
         }
     }
 }
