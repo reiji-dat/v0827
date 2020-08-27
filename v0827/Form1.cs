@@ -17,7 +17,6 @@ namespace v0827
         int vx = rand.Next(-10,11);
         int vy = rand.Next(-10,11);
         int score = 0;
-        int cool = 0;   //クールタイム
         bool pien = false;
 
         public Form1()
@@ -29,8 +28,6 @@ namespace v0827
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            cool--;
-
             label1.Left += vx;
             label1.Top += vy;
             
@@ -59,19 +56,16 @@ namespace v0827
                 &&  label1.Top    <=  mp.Y 
                 &&  label1.Bottom >   mp.Y )
             {
-                if (cool < 0)   //クールタイム解除後に捕まえられる
+                if (!pien)
                 {
-                    if (!pien)
-                    {
-                        score++;
-                        label1.Text = "( ﾉД`)ｼｸｼｸ…";
-                        pien = true;
-                        timer1.Enabled = false;
-                        label3.Text = "score " + score;
-                        MessageBox.Show("つかまっちゃった(泣)" + score + "回目だよ(泣)");
-                        label1.Text = "(´・ω・`)";
-                        pien = false;
-                    }
+                    score++;
+                    label1.Text = "( ﾉД`)ｼｸｼｸ…";
+                    pien = true;
+                    timer1.Enabled = false;
+                    label3.Text = "score " + score;
+                    MessageBox.Show("つかまっちゃった(泣)" + score + "回目だよ(泣)");
+                    label1.Text = "(´・ω・`)";
+                    pien = false;
                 }
             }
             label2.Text = mp.X + ","+ mp.Y;
@@ -79,7 +73,6 @@ namespace v0827
 
         private void label1_Click(object sender, EventArgs e)
         {
-            cool = 10;  //クールタイム10tick
             vx = rand.Next(-10, 11);
             vy = rand.Next(-10, 11);
             label1.Left = rand.Next(ClientSize.Width - label1.Size.Width);
